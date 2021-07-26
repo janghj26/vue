@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    $(function(){
+        var vue = new Vue({
+            el:'#app',
+            data:{
+                age:0
+            }
+        });
+    });
+    </script>
+</head>
+<body>
+    <div id="app">
+        나이 : <input type="number" v-model="age">
+        <br>
+        {{age}} 살은
+            <b>
+                <span v-if="age<8">유아</span>
+                <span v-if="age>=8 && age<=13">초등학생</span>
+                <span v-if="age>=14 && age<=16">중학생</span>
+                <span v-if="age>=17">고등학생</span>
+                <span v-if="age<8">대학생&성인</span>
+            </b>
+    </div>
+</body>
+</html>

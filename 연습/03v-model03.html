@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    $(function(){
+        var vue = new Vue({
+            el:'#app',
+            data:{
+                title:'중국집 주문',
+                checkMenu:[],
+                menus:["짜장면", "짬뽕"],
+                prices:[5000, 7000]
+            }
+        });
+    });
+    </script>
+</head>
+<body>
+    <div id="app">
+        <h2>{{title}}</h2>
+
+        <h3>메뉴선택</h3>
+       
+        <input type="checkbox" value="0" v-model="checkMenu">{{menus[0]}}
+        <input type="checkbox" value="1" v-model="checkMenu">{{menus[1]}}
+
+        <h3>주문내용</h3>
+
+        <div>
+            주문내용 : 
+            <span>
+                {{menus[checkMenu[0]]}}
+                {{menus[checkMenu[1]]}}
+            </span>
+        </div>
+        <div>
+            총비용 : {{
+                (checkMenu[0]!=null&&!isNaN(checkMenu[0]) ? Number(prices[checkMenu[0]]) : 0)
+                +
+                (checkMenu[1]!=null&&!isNaN(checkMenu[1]) ? Number(prices[checkMenu[1]]) : 0)
+            }}원
+        </div>
+    </div>
+
+</body>
+</html>
